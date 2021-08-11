@@ -50,7 +50,7 @@ namespace ace_paragon
             //public override string BaseTower => "DartMonkey-003";
             public override string BaseTower => "MonkeyAce-204";
             public override string Name => "AceParagon";
-            public override int Cost => 500000;
+            public override int Cost => 5000;
             public override string TowerSet => "Military";
             public override int TopPathUpgrades => 0;
             public override int MiddlePathUpgrades => 0;
@@ -61,10 +61,10 @@ namespace ace_paragon
 
             public override void ModifyBaseTowerModel(TowerModel towerModel)
             {
-                var em = Game.instance.model.GetTowerFromId("MonkeyAce-500").GetBehaviors<AttackAirUnitModel>()[0].weapons[0].emission;
+                var em = Game.instance.model.GetTowerFromId("DartMonkey-500").GetBehaviors<AttackAirUnitModel>()[0].weapons[0].emission;
                 var seeking = Game.instance.model.GetTowerFromId("NinjaMonkey-001").GetBehavior<AttackModel>().weapons[0].projectile.GetBehavior<TrackTargetWithinTimeModel>().Duplicate();
                 var tsar = Game.instance.model.GetTowerFromId("MonkeyAce-050").GetBehavior<AbilityModel>().Duplicate();
-                tsar.Cooldown = 8;
+                tsar.Cooldown = 1;
                 tsar.GetBehavior<ActivateAttackModel>().attacks[0].weapons[0].projectile.GetBehavior<SlowModel>().Lifespan = 0.2f;
                 towerModel.AddBehavior(tsar);
                 towerModel.AddBehavior(new OverrideCamoDetectionModel("a",true));
